@@ -1,9 +1,9 @@
-# A basic framework to run API tests with RestAssured)
+# A basic framework to run API tests with RestAssured
 
 ## Table of contents
-  * [Pre test requirements](#Pre test requirements)
-  * [To run tests from IDE](#To run tests from IDE)
-  * [To run tests from maven](#To run tests from Maven)
+  - [Pre test requirements](#Pre test requirements)
+  - [To run tests from IDE](#To run tests from IDE)
+  - [To run tests from maven](#To run tests from Maven)
  
 ## Pre test requirements
 1. Java 8 should be pre-installed. Please check such points:
