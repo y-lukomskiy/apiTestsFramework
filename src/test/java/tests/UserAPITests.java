@@ -20,13 +20,13 @@ public class UserAPITests extends TestConfig implements Endpoints {
         request.put("job", "best job");
 
         given().spec(requestSpecification).
-            body(request).
-        when().
-            post(Endpoints.USER_ENDPOINT).
-        then().
-            assertThat().statusCode(201).
-            body("name", equalTo("QA tester"),
-                "job", is("best job"));
+                body(request).
+                when().
+                post(Endpoints.USER_ENDPOINT).
+                then().
+                assertThat().statusCode(201).
+                body("name", equalTo("QA tester"),
+                        "job", is("best job"));
     }
 
     @Test (description = "Get user by id")
@@ -34,10 +34,10 @@ public class UserAPITests extends TestConfig implements Endpoints {
         given().spec(requestSpecification).
                 pathParam("userID",12).
                 log().ifValidationFails().
-        when().
-                 get(Endpoints.USER_ENDPOINT + "/{userID}")
-        .then()
-                .log().body()
+                when().
+                get(Endpoints.USER_ENDPOINT + "/{userID}")
+                .then()
+                .log().ifValidationFails()
                 .statusCode(200)
                 .body("data.first_name", equalTo("Rachel"),
                         "data.last_name", is("Howell"));
@@ -52,9 +52,9 @@ public class UserAPITests extends TestConfig implements Endpoints {
 
         given().spec(requestSpecification).
                 body(request).
-        when().
+                when().
                 put(Endpoints.UPDATE_USER_ENDPOINT).
-        then().
+                then().
                 assertThat().statusCode(200).
                 body("name", equalTo("QA tester"),
                         "job", is("best job"));
@@ -68,9 +68,9 @@ public class UserAPITests extends TestConfig implements Endpoints {
 
         given().spec(requestSpecification).
                 body(request).
-        when().
+                when().
                 patch(Endpoints.UPDATE_USER_ENDPOINT).
-        then().
+                then().
                 assertThat().statusCode(200).
                 body("name", equalTo("QA tester"),
                         "job", is("best job"));
@@ -79,16 +79,13 @@ public class UserAPITests extends TestConfig implements Endpoints {
 
     @Test (description = "Delete user by ID")
     public void deletePetById() {
-                given().spec(requestSpecification).
+        given().spec(requestSpecification).
                 pathParam("userID",12).
                 log().ifValidationFails().
-        when().
-                 delete(Endpoints.USER_ENDPOINT + "/{userID}")
-        .then()
-                .log().body()
+                when().
+                delete(Endpoints.USER_ENDPOINT + "/{userID}")
+                .then()
+                .log().ifValidationFails()
                 .statusCode(204);
     }
 }
-
-
-
